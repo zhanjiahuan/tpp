@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>套票票</title>
+    <meta charset="utf-8"/>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="../base/js/base.js"></script>
+
+    <link rel="stylesheet" href="../src/css/common.less.css">
+    <link rel="stylesheet" href="../src/css/index-min.css">
+    <link rel="stylesheet" href="../src/css/index.less.css">
+    <link rel="stylesheet" href="../src/css/detail_wrap.css">
+    <link href="../src/css/footer/index.css" rel="stylesheet">
+    <script src="../src/js/movie_detail.js"></script>
+</head>
+
+<body data-changeCityInPage="true" data-spm="6646385">
+
+<div class="head-wrap" data-spm="header">
+    <div class="head-content center-wrap">
+        <h1 class="logo">
+            <a target="_top" href="#"></a>
+        </h1>
+        <!--cityWrap_hover-->
+        <div class="cityWrap  M-cityWrap">
+            <a id="cityName" class="cityName" href="javascript:"><span class="name" id="city_name"></span><s class="tri"></s></a>
+            <input type="hidden" id="H_CityId" value="310100">
+            <input type="hidden" id="H_CityName" value="上海">
+            <div class="cityList ">
+                <div class="cityBox" data-spm="city">
+                    <div class="cityTitle">
+                        热门:
+                        <a href="?city=100000" data-id="110100" class="ignore-city">北京</a>
+                        <a href="?city=200000" data-id="200000" class="ignore-city">上海</a>
+                        <a href="?city=310026" data-id="310026" class="ignore-city">杭州</a>
+                        <a href="?city=510032" data-id="510032" class="ignore-city">广州</a>
+                        <a href="?city=518035" data-id="518035" class="ignore-city">深圳</a>
+                        <a href="?city=400000" data-id="400000" class="ignore-city">重庆</a>
+                        <a href="?city=610015" data-id="610015" class="ignore-city">成都</a>
+                        <a href="?city=210008" data-id="210008" class="ignore-city">南京</a>
+                        <a href="?city=215002" data-id="215002" class="ignore-city">苏州</a>
+                        <a href="?city=430014" data-id="430014" class="ignore-city">武汉</a>
+                        <a href="?city=710003" data-id="710003" class="ignore-city">西安</a>
+                    </div>
+                    <div class="M-cityList scrollStyle">
+                        <!--<div class="loading"><i></i></div>-->
+                    </div>
+                    <div class="citySearch">
+                        <label>搜索城市:</label><input type="text"><a href="javascript:"
+                                                                  class="J_citySearch_btn">&nbsp;确定&nbsp;</a>
+                    </div>
+                </div>
+                <div class="cityShade"></div>
+            </div>
+        </div>
+
+        <div class="nav-wrap">
+            <ul class="nav">
+                <li class="J_NavItem ">
+                    <a href="index.html" target="_top">首页</a>
+                </li>
+                <li class="J_NavItem current">
+                    <a href="" target="_top">影片</a>
+                </li>
+                <li class="J_NavItem ">
+                    <a href="cinema_list.html" target="_top">影院</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://g.alicdn.com/life/pc-movie/1.0.43/??pages/movie_detail/index.less.css,mods/list/title.less.css,mods/list/filter.less.css,mods/list/hall.less.css,mods/list/custtop.less.css,pages/movie_detail/comment.less.css">
+<div class="detail-wrap J_detailWrap" data-spm="w1">
+    <!--详情背景图-->
+    <div class="detail-bg J_detailBg"
+         data-bg="https://img.alicdn.com/bao/uploaded/i4/TB1fBJDugHqK1RjSZJnXXbNLpXa_.jpg_60x60.jpg"></div>
+
+    <!--下拉切换影片-->
+    <div class="detail-movies J_moviesWindow">
+        <div class="center-wrap">
+            <a href="javascript:;" class="scroll-btn"></a>
+            <a href="javascript:;" class="scroll-btn scroll-btn-right"></a>
+            <div class="movies-scroll">
+                <ul class="J_moviesList">
+                    <li>
+                        <a href="showDetail.htm?showId=136466&source=current&n_s=new">
+                            <img src="https://img.alicdn.com/bao/uploaded/i4/TB1fBJDugHqK1RjSZJnXXbNLpXa_.jpg_300x300.jpg"
+                                 alt="海王">
+                            <span><em class="name">海王</em><em class="score">9.2</em></span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="center-wrap">
+        <a class="movies-open J_moviesOpen" href="javascript:;" >切换影片</a>
+    </div>
+
+    <!--电影详情-->
+    <div class="detail-cont">
+        <div class="center-wrap" id="movie_content">
+        </div>
+    </div>
+</div>
+
+<div class="title-wrap">
+    <div class="center-wrap">
+        <h3>选座购票</h3>
+    </div>
+</div>
+<!-- todo 地区影院排片 -->
+<div class="schedule-wrap J_scheduleWrap schedule-loaded">
+    <!-- Filter -->
+    <div class="filter-wrap">
+        <div class="center-wrap">
+            <ul class="filter-select">
+                <li>
+                    <label>选择区域</label>
+                    <div class="select-tags">
+                        <a class="current" href="javascript:;" data-param="showId=136466&amp;n_s=new">全部区域</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=蔡甸区&amp;ts=1544704041008&amp;n_s=new">蔡甸区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=东西湖区&amp;ts=1544704041008&amp;n_s=new">东西湖区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=汉南区&amp;ts=1544704041008&amp;n_s=new">汉南区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=汉阳区&amp;ts=1544704041008&amp;n_s=new">汉阳区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=洪山区&amp;ts=1544704041008&amp;n_s=new">洪山区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=黄陂区&amp;ts=1544704041008&amp;n_s=new">黄陂区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=江岸区&amp;ts=1544704041008&amp;n_s=new">江岸区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=江汉区&amp;ts=1544704041008&amp;n_s=new">江汉区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=江夏区&amp;ts=1544704041008&amp;n_s=new">江夏区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=经济技术开发区&amp;ts=1544704041008&amp;n_s=new">经济技术开发区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=硚口区&amp;ts=1544704041008&amp;n_s=new">硚口区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=青山区&amp;ts=1544704041008&amp;n_s=new">青山区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=武昌区&amp;ts=1544704041008&amp;n_s=new">武昌区</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;regionName=新洲区&amp;ts=1544704041008&amp;n_s=new">新洲区</a>
+                    </div>
+                </li>
+                <li>
+                    <label>选择影城</label>
+                    <div class="select-tags">
+                        <a class="current" href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=45946&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">蔡甸金逸影城IMAX店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=23713&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">华夏世纪影城（蔡甸店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=39355&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">中影星美浩瀚国际影城（常福店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=14820&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（经开万达广场店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=39180&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉恒大城影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=22289&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">CGV影城（金银潭店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=13078&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">金逸影城武汉吴家山北冰洋店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=26224&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（东西湖中心广场店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=29103&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">横店电影城（汇和店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=35209&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉汉南影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=48826&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">天河影城汉南店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=4360&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">汉阳天河国际影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=18956&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉百老汇影城汉阳人信汇店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=48958&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">CGV影城(武汉江腾IMAX店)</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=6250&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">金逸影城武汉王家湾店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=17322&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">大地影城（汉阳新世界店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=49614&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉纽宾凯环球影城（芳草路店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=14811&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（汉阳汉商银座店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=45805&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">中影星美浩瀚国际影城（铁桥店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=28672&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉耀莱成龙国际影城（光谷店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=35594&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉中影星美国际影城（创意天地店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=7961&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">中影国际影城武汉光谷天河店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=56358&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">自由人影城（武汉金地广场店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=37163&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">恒业影城武汉店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=18994&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉光谷正华银兴影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=21299&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（佰港城店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=43572&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">锦绣龙城华幕影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=6201&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">金逸影城武汉南湖店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=56889&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">春天国际影城（武汉未来城店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=45380&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉银兴东融国际影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=9801&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">巨幕影城（武汉光谷广场资本大厦店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=25691&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">天河欢乐汇影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=47712&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉百方汇影城（光谷K11店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=23658&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">幸福蓝海(武汉雄楚店)</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=19825&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">CGV影城（光谷IMAX店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=31357&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉博纳国际影城(IMAX)　</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=56967&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">德信影城（ho街店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=53645&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">金逸院线星汇影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=13796&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉华夏国际影城-鲁广店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=29670&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">东澜岸天河影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=39144&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">银兴国际影城光谷时尚城店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=5609&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">洪山天河国际影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=45828&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">天纵城环球影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=55567&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">瀚鑫影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=55079&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">维佳银兴国际影城（盘龙城店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=5954&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">华谊兄弟影院(黄陂店)</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=38475&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">飞尚国际影城（武汉奥莱店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=56693&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">唐阁影城（武汉黄陂店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=45209&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">中影烽禾影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=38607&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉恒大龙城影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=22294&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">城市广场摩尔国际电影城（后湖店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=45871&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">明星时代影城（武汉华林店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=4400&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">中影国际影城武汉江岸东购店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=37459&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉新天汇影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=38741&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">艾米1895电影街（台北路店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=33928&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">中南剧场1001天河影院</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=32675&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉魔影国际影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=36771&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉百丽宫影城（壹方店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=4783&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">华夏国际影城（后湖新生活摩尔城店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=48568&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">CGV影城（武汉永旺金桥IMAX店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=5321&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">CGV星星影城（天地店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=24029&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（大智路长青广场店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=55296&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉大汉口电影院（水塔店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=5448&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（菱角湖万达广场店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=5706&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">湖北银兴国际影城（西园旗舰店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=9304&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">金逸影城武汉杨汊湖店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=45189&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">橙天嘉禾影城（M+购物广场店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=17289&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉泛海国际影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=9362&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">横店电影城（王府井店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=39098&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">中影新干线国际影城（新世界百货国贸店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=6085&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武商摩尔国际电影城（国广店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=4303&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉UA新民众乐园电影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=57296&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉耀莱成龙国际影城吉庆街店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=30949&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">新唐万科摩尔国际电影城（新唐万科店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=9456&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（江汉路悦荟广场店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=33017&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉璇宫国际影城（江汉路店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=52504&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">中影峰禾影城罗马奥莱店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=36634&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">金逸影城(金逸影城武汉江夏店)</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=16956&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">大地影院（武汉宜佳店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=23614&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉市高德国际影城江夏店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=27016&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（江夏MALL店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=33419&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉幻幕影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=56994&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">银兴国际影城同兴店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=54961&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">华夏影城江夏店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=37051&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">风云影城江夏店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=33222&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉东汉影院</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=10459&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">银兴国际影城江夏店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=32989&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉市高德国际影城(藏龙岛店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=4898&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">大地影院（湘隆店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=45962&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">新港国际影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=31216&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">中影国际影城（武汉经开永旺店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=36660&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">博影时代影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=22354&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉橙天嘉禾南国西汇影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=41623&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">CGV影城（凯德西城IMAX店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=8092&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">金逸影城武汉武胜路店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=26031&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">金逸影城IMAX（光美武汉荟聚店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=29629&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">银兴星汇维港电影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=52952&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉中影优加影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=22295&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武商众圆摩尔国际电影城（众圆店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=13918&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">CGV影城（奥山IMAX店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=38756&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉耀莱成龙国际影城（八大家店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=49328&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉UME国际影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=34821&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">洪山礼堂银兴电影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=5382&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（春树里广场店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=18955&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉百老汇影城亚贸兴汇店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=31504&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉百瑞景天河国际影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=41005&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">嘉裕国际影城武汉店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=6226&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">湖北剧院银兴电影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=9556&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">金逸影城武汉中南店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=8057&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">金逸影城武汉销品茂IMAX店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=30856&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">中影国际电影城海达店</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=37273&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">CGV影城（昙华林店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=42910&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉耀莱成龙国际影城（中南二路店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=9898&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">横店电影城（首义店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=20671&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（群星城店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=14531&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（汉街万达广场店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=14025&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">万达影城（福客茂店）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=42979&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">武汉莱纳万隆影院</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=28911&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">卢米埃影城(凯德1818广场店)</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=29697&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">阳逻天河国际影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=30739&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">新洲摩尔影城</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;cinemaId=45961&amp;date=2018-12-13&amp;regionName=&amp;ts=1544704041008&amp;n_s=new">新洲幸福时代银兴国际影城</a>
+                    </div>
+                    <a class="J_show select-show" href="javascript:;">更多&gt;</a></li>
+                <li>
+                    <label>选择时间</label>
+                    <div class="select-tags">
+                        <a class="current" href="javascript:;"
+                           data-param="showId=136466&amp;date=2018-12-13&amp;n_s=new&amp;regionName=&amp;cinemaId=45946&amp;ts=1544704041008&amp;n_s=new">12月13日（今天）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;date=2018-12-14&amp;n_s=new&amp;regionName=&amp;cinemaId=45946&amp;ts=1544704041008&amp;n_s=new">12月14日（周五）</a>
+                        <a href="javascript:;"
+                           data-param="showId=136466&amp;date=2018-12-15&amp;n_s=new&amp;regionName=&amp;cinemaId=45946&amp;ts=1544704041008&amp;n_s=new">12月15日（周六）</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Cinema bar -->
+    <div class="center-wrap cinemabar-wrap">
+        <h4>蔡甸金逸影城IMAX店</h4>
+        地址：蔡甸区蔡甸街新福路新福茂中央广场第四层 <a href="/cinemaDetail.htm?cinemaId=45946&amp;n_s=new#detail">[地图]</a> 电话：027-69114689
+        <a class="more" href="/cinemaDetail.htm?cinemaId=45946&amp;n_s=new">查看影院详情&nbsp;&gt;</a>
+    </div>
+
+    <!-- Hall Tabel -->
+    <div class="center-wrap">
+        <table class="hall-table">
+            <thead>
+            <tr>
+                <th class="hall-time">放映时间</th>
+                <th class="hall-type">语言版本</th>
+                <th class="hall-name">放映厅</th>
+                <th class="hall-flow">座位情况</th>
+                <th class="hall-price">现价/影院价（元）</th>
+                <th class="hall-buy">选座购票</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            <tr>
+                <td class="hall-time">
+                    <em class="bold">20:35</em>
+                    预计22:58散场
+                </td>
+                <td class="hall-type">
+                    英语 IMAX3D
+                </td>
+                <td class="hall-name">
+                    一号IMAX厅儿童需购票
+                </td>
+
+                <td class="hall-flow">
+                    <div class="flowing-wrap flowing-loose">
+                        <label> 宽松 </label>
+                        <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                        <span class="flowing-view J_flowingView" data-scheduleid="598944010">
+								    								<i class="icon-zoom"></i>
+    								<div class="view-wrap" style="display:none;">
+    									<div class="view-box">加载中...</div>
+    								</div>
+															</span>
+                    </div>
+                </td>
+                <td class="hall-price" data-partcode="vistajinyi">
+                    <em class="now">45.00</em>
+                    <del class="old">45.00</del>
+                </td>
+                <td class="hall-seat">
+                    <a class="seat-btn" href="">选座购票</a>
+                </td>
+            </tr>
+
+            <tr class="even">
+                <td class="hall-time">
+                    <em class="bold">21:20</em>
+                    预计23:43散场
+                </td>
+                <td class="hall-type">
+                    英语 3D
+                </td>
+                <td class="hall-name">
+                    二号厅自备眼镜
+                </td>
+
+                <td class="hall-flow">
+                    <div class="flowing-wrap flowing-loose">
+                        <label> 宽松 </label>
+                        <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                        <span class="flowing-view J_flowingView" data-scheduleid="598944060">
+								    								<i class="icon-zoom"></i>
+    								<div class="view-wrap" style="display:none;">
+    									<div class="view-box">加载中...</div>
+    								</div>
+															</span>
+                    </div>
+                </td>
+                <td class="hall-price" data-partcode="vistajinyi">
+                    <em class="now">38.00</em>
+                    <del class="old">38.00</del>
+                </td>
+                <td class="hall-seat">
+                    <a class="seat-btn" href="">选座购票</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="hall-time">
+                    <em class="bold">22:25</em>
+                    预计次日00:48散场
+                </td>
+                <td class="hall-type">
+                    国语 3D
+                </td>
+                <td class="hall-name">
+                    四号全景声厅自备眼镜
+                </td>
+
+                <td class="hall-flow">
+                    <div class="flowing-wrap flowing-loose">
+                        <label> 宽松 </label>
+                        <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                        <span class="flowing-view J_flowingView" data-scheduleid="598944041">
+								    								<i class="icon-zoom"></i>
+    								<div class="view-wrap" style="display:none;">
+    									<div class="view-box">加载中...</div>
+    								</div>
+															</span>
+                    </div>
+                </td>
+                <td class="hall-price" data-partcode="vistajinyi">
+                    <em class="now">38.00</em>
+                    <del class="old">38.00</del>
+                </td>
+                <td class="hall-seat">
+                    <a class="seat-btn" href="">选座购票</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="foot"></div>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>卢米埃影城(芳草地店) &ndash; 北京电影院影讯、地址、电话、地图、在线选座订票、兑换券、团购 - 淘票票</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <link rel="stylesheet" href="../src/css/common.less.css" clam-moveto="none">
+    <link rel="stylesheet" href="../src/css/index-min.css">
+    <link rel="stylesheet" href="../src/css/index.less.css">
+    <style>
+        .banner-sp-float {
+            display:none;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            
+        })
+    </script>
+</head>
+
+<body>
+
+<div class="head-wrap" data-spm="header">
+    <div class="head-content center-wrap">
+        <h1 class="logo">
+            <a target="_top" href="https://www.taopiaopiao.com/?n_s=new"></a>
+        </h1>
+        <div class="cityWrap  M-cityWrap">
+            <a id="cityName" class="cityName"  href="javascript:"><span class="name"></span><s class="tri"></s></a>
+            <input type="hidden" id="H_CityId" value="310100">
+            <input type="hidden" id="H_CityName" value="上海">
+            <div class="cityList " >
+                <div class="cityBox"  data-spm="city">
+                    <div class="cityTitle">
+                        热门:
+                        <a href="/?city=110100" data-id="110100" class="ignore-city">北京</a>
+                        <a href="/?city=310100" data-id="310100" class="ignore-city">上海</a>
+                        <a href="/?city=330100" data-id="330100" class="ignore-city">杭州</a>
+                        <a href="/?city=440100" data-id="440100" class="ignore-city">广州</a>
+                        <a href="/?city=440300" data-id="440300" class="ignore-city">深圳</a>
+                        <a href="/?city=500100" data-id="500100" class="ignore-city">重庆</a>
+                        <a href="/?city=510100" data-id="510100" class="ignore-city">成都</a>
+                        <a href="/?city=320100" data-id="320100" class="ignore-city">南京</a>
+                        <a href="/?city=320500" data-id="320500" class="ignore-city">苏州</a>
+                        <a href="/?city=420100" data-id="420100" class="ignore-city">武汉</a>
+                        <a href="/?city=610100" data-id="610100" class="ignore-city">西安</a>
+                    </div>
+                    <div class="M-cityList scrollStyle">
+                        <div class="loading"><i></i></div>
+                    </div>
+                    <div class="citySearch">
+                        <label>搜索城市:</label><input type="text"><a href="javascript:" class="J_citySearch_btn">&nbsp;确定&nbsp;</a>
+                    </div>
+                </div>
+                <div class="cityShade"></div>
+            </div>
+        </div>
+        <div class="nav-wrap">
+            <ul class="nav">
+                <li class="J_NavItem ">
+                    <a href="https://www.taopiaopiao.com/index.htm?n_s=new" target="_top">首页</a>
+                </li>
+                <li class="J_NavItem ">
+                    <a href="https://www.taopiaopiao.com/showList.htm?n_s=new" target="_top">影片</a>
+                </li>
+                <li class="J_NavItem  current ">
+                    <a href="https://www.taopiaopiao.com/cinemaList.htm?n_s=new" target="_top">影院</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="entrance-wrap">
+            <ul class="entrance">
+                <li class="entrance-item">
+                    <a class="phone  " href="https://www.taobao.com/market/dianying/xsdxs.php?n_s=new" target="_blank">手机购买</a>
+                </li>
+                <li class="entrance-item">
+                    <a class="service" href="javascript:" onclick="window.open('//service.taobao.com/support/minerva/beta_robot_main.htm?sourceId=1305094727','newwindow','height=500,width=800,top=100px,left=100px,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no')" class="iconBtn right_fix_a" title="服咨询" data-spm-anchor-id="a1z21.3046609.rn.6">客服咨询</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="../src/css/cinema_detail.css">
+<style>
+    .ju-popup-wrapper .ju-popup .bd{height:auto; text-align: center;}
+    .wanda-h5{
+        font-size:16px;
+        text-align: left;
+    }
+    .output-code{
+        position: relative;
+        background:url(//img.alicdn.com/tps/i2/TB1elhmGFXXXXaLapXX5XTNOpXX-475-177.jpg/tps/i4/TB14CDBHXXXXXXNXFXX8D81MXXX-468-550.jpg
+        ) no-repeat left bottom;
+        height:300px;
+        background-size:40%;
+    }
+    .output-code canvas{
+        position: absolute;
+        left: 360px;
+        top: 80px;
+    }
+    .ju-popup{
+        top:20%;
+    }
+</style>
+<script>
+    function alertCode(cinemaId,movieId){
+        KISSY.use(["event","node","jbc/jupopup"],function(S,Event,Node,Box){
+//var jumpUrl = "http://d.alipay.com/movie/jump.htm?target=showtimeList&cinemaId=4497&providerCode=tbmovie&movieId=16730
+            var jumpUrl = "http://d.alipay.com/movie/jump.htm?appId=20000131&target=showtimeList&cinemaId="+cinemaId+"&providerCode=tbmovie&movieId="+movieId+"";
+            var options = {
+                render : "canvas",
+                width : 160,
+                height : 160,
+                typeNumber : -1,
+                correctLevel : lib.QRErrorCorrectLevel.H,
+                background : "#ffffff",
+                foreground : "#000000"
+            }
+            var qrcode = new lib.QRCode(options.typeNumber, options.correctLevel);
+            qrcode.addData(jumpUrl);
+            qrcode.make();
+
+// create canvas element
+            var canvas = document.createElement('canvas');
+            canvas.width = options.width;
+            canvas.height = options.height;
+            var ctx = canvas.getContext('2d');
+
+// compute tileW/tileH based on options.width/options.height
+            var tileW = options.width / qrcode.getModuleCount();
+            var tileH = options.height / qrcode.getModuleCount();
+
+// draw in the canvas
+            for( var row = 0; row < qrcode.getModuleCount(); row++ ){
+                for( var col = 0; col < qrcode.getModuleCount(); col++ ){
+                    ctx.fillStyle = qrcode.isDark(row, col) ? options.foreground : options.background;
+                    var w = (Math.ceil((col+1)*tileW) - Math.floor(col*tileW));
+                    var h = (Math.ceil((row+1)*tileW) - Math.floor(row*tileW));
+                    ctx.fillRect(Math.round(col*tileW),Math.round(row*tileH), w, h);
+                }
+            }
+            S.all('.ju-popup-wrapper').remove();
+            new Box({
+                autoShow: true,
+                title: '提示',
+                top:20,
+                width:600,
+                content: "<h5 class='wanda-h5'>由于万达影院购票流程已修改，请用支付宝钱包扫描下面的二维码继续购票</h5><div id='output' class='output-code'></div>",
+                buttons:[{
+                    style: 'btn',
+                    text: '确定',
+                    func: function() {
+                        this.hide();
+                    }
+                }]
+            });
+            document.querySelector("#output").appendChild(canvas);
+
+        })
+    }
+</script>
+
+<div class='infomation-wrapper' data-spm="w1">
+    <div class='center-wrap'>
+        <h4 class='title'>卢米埃影城(芳草地店)<!--small class='mark'>关注：22093</small--><small class='score'>9.4 </small><small class="others"><!--a class="J_gocomment" href="#comment">[评价]</a--><!--a href="#">[纠错信息]</a--></small></h4>
+        <div class='info'>
+            <a data-type='image' class='float-layer-hook float-layer-wrapper' >
+                <img data-src="https://gw.alicdn.com/tfscom/i4/TB1XihcjnqWBKNjSZFAXXanSpXa_.jpg">
+            </a>
+            <ul class='info-list'>
+                <li>详细地址：朝阳区东大桥路9号芳草地大厦LG2-26<a class='pos-hook' data-href="#J-map">[地图]</a></li>					<li>联系电话：010-56907679,0</li>															<li>更多信息：
+                <a class='pos-hook' data-href=".traffic-server-hook">交通信息</a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class='center-wrap cinema-detail-wrapper M-detail' data-spm="w4">
+    <div class='cinema-detail-item'>
+        <div class="title-wrap" > <h3 class="special-detail-hook">影院介绍</h3></div>
+        <ul>
+            <li><span>详细地址： </span>朝阳区东大桥路9号芳草地大厦LG2-26 [<a data-href="#J-map" class='pos-hook'>地图</a>]</li>
+            <li><span>联系电话： </span>010-56907679,0</li>												<!--li><span>营业时间： </span></li-->
+        </ul>
+
+    </div>
+</div>
+<div class="center-wrap M-seat" style="" data-spm="w2">
+    <div class="schedule-wrap J_scheduleWrap schedule-loaded" data-type="cinema_detail" data-ajax="/cinemaDetailSchedule.htm" data-param="showId=&amp;cinemaId=9462&amp;ts=1544836617267&amp;n_s=new">
+
+        <div class="center-wrap w-seat-wrapper">
+            <div class="filter-wrap">
+                <ul class="filter-select">
+                    <li>
+                        <label>选择影片</label>
+                        <div class="select-tags">
+                            <a class="current" href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=136466&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">海王</a>
+                            <a href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=39883&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">龙猫</a>
+                            <a href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=1279260&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">网络谜踪</a>
+                            <a href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=1273793&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">印度合伙人</a>
+                            <a href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=226415&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">无名之辈</a>
+                            <a href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=1295507&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">2018莎士比亚经典剧目影展</a>
+                            <a href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=272919&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">绿毛怪格林奇</a>
+                            <a href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=1248568&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">摘金奇缘</a>
+                            <a href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=517234&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">天气预爆</a>
+                            <a href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=521405&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">叶问外传：张天志</a>
+                            <a href="javascript:;" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=217761&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new">地球最后的夜晚</a>
+                        </div>
+                    </li>
+                    <li>
+                        <label>选择时间</label>
+                        <div class="select-tags">
+                            <a class="current" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=136466&amp;showDate=2018-12-15&amp;ts=1544836619285&amp;n_s=new" href="javascript:;">12月15日（今天）</a>
+                            <a data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=136466&amp;showDate=2018-12-16&amp;ts=1544836619285&amp;n_s=new" href="javascript:;">12月16日（周日）</a>
+                            <a data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=136466&amp;showDate=2018-12-17&amp;ts=1544836619285&amp;n_s=new" href="javascript:;">12月17日（周一）</a>
+                            <a data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=136466&amp;showDate=2018-12-18&amp;ts=1544836619285&amp;n_s=new" href="javascript:;">12月18日（周二）</a>
+                            <a data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=136466&amp;showDate=2018-12-19&amp;ts=1544836619285&amp;n_s=new" href="javascript:;">12月19日（周三）</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- movie bar -->
+            <div class="movie-wrapper M-movie">
+                <img class="movie-post" width="120" height="160" src="https://img.alicdn.com/bao/uploaded/i4/TB1fBJDugHqK1RjSZJnXXbNLpXa_.jpg_160x160.jpg">
+                <div class="movie-info-wrap">
+                    <h4 class="info-title">
+                        <a href="https://www.taopiaopiao.com/showDetail.htm?showId=136466&amp;n_s=new" class="movie-name">海王<small class="score">9.2</small></a><!--small class='mark'>关注度：40000000</small--></h4>
+                    <div class="right-info">
+                        <a class="detail" href="https://www.taopiaopiao.com/showDetail.htm?showId=136466&amp;n_s=new">查看影片详情&nbsp;&gt;</a>
+                    </div>
+                    <div class="movie-info">
+                        <ul>
+                            <li>导演：温子仁</li>						<li>主演：杰森·莫玛,艾梅柏·希尔德,威廉·达福,妮可·基德曼</li>						<li>类型：动作,冒险,奇幻</li>						<li>制片国家/地区：美国</li>						<li>语言：英语</li>					</ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Hall Tabel-->
+            <div class="center-wrap">
+                <table class="hall-table">
+                    <thead>
+                    <tr>
+                        <th class="hall-time">放映时间</th>
+                        <th class="hall-type">语言版本</th>
+                        <th class="hall-name">放映厅</th>
+                        <th class="hall-flow">座位情况</th>
+                        <th class="hall-price">现价/影院价（元）</th>
+                        <th class="hall-buy">选座购票</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                    <tr>
+                        <td class="hall-time">
+                            <em class="bold">09:20</em>
+                            预计11:43散场 					</td>
+                        <td class="hall-type">
+                            原版 3D
+                        </td>
+                        <td class="hall-name">
+                            LD2厅 杜比全景声
+                        </td>
+
+                        <td class="hall-flow">
+                            <div class="flowing-wrap flowing-loose">
+                                <label> 宽松  </label>
+                                <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                                <span class="flowing-view J_flowingView" data-scheduleid="599167863">
+															</span>
+                            </div>
+                        </td>
+                        <td class="hall-price" data-partcode="lumiaivista">
+                            <em class="now">79.00</em>
+                            <del class="old">79.00</del>
+                        </td>
+                        <td class="hall-seat">
+                            已停止售票
+                        </td>
+                    </tr>
+
+                    <tr class="even">
+                        <td class="hall-time">
+                            <em class="bold">10:40</em>
+                            预计13:03散场 					</td>
+                        <td class="hall-type">
+                            原版 3D
+                        </td>
+                        <td class="hall-name">
+                            VIP
+                        </td>
+
+                        <td class="hall-flow">
+                            <div class="flowing-wrap flowing-loose">
+                                <label> 宽松  </label>
+                                <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                                <span class="flowing-view J_flowingView rendered" data-scheduleid="599244536">
+								    								<i class="icon-zoom"></i>
+    								<div class="view-wrap" style="display: none;">加载失败，请刷新再试。</div>
+															</span>
+                            </div>
+                        </td>
+                        <td class="hall-price" data-partcode="lumiaivista">
+                            <em class="now">124.00</em>
+                            <del class="old">124.00</del>
+                        </td>
+                        <td class="hall-seat">
+                            <a class="seat-btn" href="../account/buy_second.html">选座购票</a>
+                        </td>
+                    </tr>
+
+
+
+                    <tr class="even">
+                        <td class="hall-time">
+                            <em class="bold">19:20</em>
+                            预计21:43散场 					</td>
+                        <td class="hall-type">
+                            原版 3D
+                        </td>
+                        <td class="hall-name">
+                            LD3厅 杜比全景声
+                        </td>
+
+                        <td class="hall-flow">
+                            <div class="flowing-wrap flowing-loose">
+                                <label> 宽松  </label>
+                                <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                                <span class="flowing-view J_flowingView" data-scheduleid="599736765">
+								    								<i class="icon-zoom"></i>
+    								<div class="view-wrap" style="display:none;">
+    									<div class="view-box">加载中...</div>
+    								</div>
+															</span>
+                            </div>
+                        </td>
+                        <td class="hall-price" data-partcode="lumiaivista">
+                            <em class="now">94.00</em>
+                            <del class="old">94.00</del>
+                        </td>
+                        <td class="hall-seat">
+                            <a class="seat-btn" href="../account/buy_second.html">选座购票</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="hall-time">
+                            <em class="bold">20:00</em>
+                            预计22:23散场 					</td>
+                        <td class="hall-type">
+                            原版 3D
+                        </td>
+                        <td class="hall-name">
+                            LD2厅 杜比全景声
+                        </td>
+
+                        <td class="hall-flow">
+                            <div class="flowing-wrap flowing-loose">
+                                <label> 宽松  </label>
+                                <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                                <span class="flowing-view J_flowingView" data-scheduleid="599167859">
+								    								<i class="icon-zoom"></i>
+    								<div class="view-wrap" style="display:none;">
+    									<div class="view-box">加载中...</div>
+    								</div>
+															</span>
+                            </div>
+                        </td>
+                        <td class="hall-price" data-partcode="lumiaivista">
+                            <em class="now">94.00</em>
+                            <del class="old">94.00</del>
+                        </td>
+                        <td class="hall-seat">
+                            <a class="seat-btn" href="../account/buy_second.html">选座购票</a>
+                        </td>
+                    </tr>
+
+                    <tr class="even">
+                        <td class="hall-time">
+                            <em class="bold">20:45</em>
+                            预计23:08散场 					</td>
+                        <td class="hall-type">
+                            原版 3D
+                        </td>
+                        <td class="hall-name">
+                            LD1厅 杜比全景声
+                        </td>
+
+                        <td class="hall-flow">
+                            <div class="flowing-wrap flowing-loose">
+                                <label> 宽松  </label>
+                                <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                                <span class="flowing-view J_flowingView" data-scheduleid="599736759">
+								    								<i class="icon-zoom"></i>
+    								<div class="view-wrap" style="display:none;">
+    									<div class="view-box">加载中...</div>
+    								</div>
+															</span>
+                            </div>
+                        </td>
+                        <td class="hall-price" data-partcode="lumiaivista">
+                            <em class="now">94.00</em>
+                            <del class="old">94.00</del>
+                        </td>
+                        <td class="hall-seat">
+                            <a class="seat-btn" href="../account/buy_second.html">选座购票</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="hall-time">
+                            <em class="bold">21:30</em>
+                            预计23:53散场 					</td>
+                        <td class="hall-type">
+                            原版 3D
+                        </td>
+                        <td class="hall-name">
+                            VIP
+                        </td>
+
+                        <td class="hall-flow">
+                            <div class="flowing-wrap flowing-loose">
+                                <label> 宽松  </label>
+                                <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                                <span class="flowing-view J_flowingView" data-scheduleid="599167862">
+								    								<i class="icon-zoom"></i>
+    								<div class="view-wrap" style="display:none;">
+    									<div class="view-box">加载中...</div>
+    								</div>
+															</span>
+                            </div>
+                        </td>
+                        <td class="hall-price" data-partcode="lumiaivista">
+                            <em class="now">124.00</em>
+                            <del class="old">124.00</del>
+                        </td>
+                        <td class="hall-seat">
+                            <a class="seat-btn" href="../account/buy_second.html">选座购票</a>
+                        </td>
+                    </tr>
+
+                    <tr class="even">
+                        <td class="hall-time">
+                            <em class="bold">22:00</em>
+                            预计次日00:23散场 					</td>
+                        <td class="hall-type">
+                            原版 3D
+                        </td>
+                        <td class="hall-name">
+                            LD3厅 杜比全景声
+                        </td>
+
+                        <td class="hall-flow">
+                            <div class="flowing-wrap flowing-loose">
+                                <label> 宽松  </label>
+                                <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                                <span class="flowing-view J_flowingView" data-scheduleid="599736762">
+								    								<i class="icon-zoom"></i>
+    								<div class="view-wrap" style="display:none;">
+    									<div class="view-box">加载中...</div>
+    								</div>
+															</span>
+                            </div>
+                        </td>
+                        <td class="hall-price" data-partcode="lumiaivista">
+                            <em class="now">94.00</em>
+                            <del class="old">94.00</del>
+                        </td>
+                        <td class="hall-seat">
+                            <a class="seat-btn" href="../account/buy_second.html">选座购票</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="hall-time">
+                            <em class="bold">22:40</em>
+                            预计次日01:03散场 					</td>
+                        <td class="hall-type">
+                            原版 3D
+                        </td>
+                        <td class="hall-name">
+                            LD2厅 杜比全景声
+                        </td>
+
+                        <td class="hall-flow">
+                            <div class="flowing-wrap flowing-loose">
+                                <label> 宽松  </label>
+                                <span class="flowing-vol"><i style="width:0.0%"></i></span>
+                                <span class="flowing-view J_flowingView" data-scheduleid="599167868">
+								    								<i class="icon-zoom"></i>
+    								<div class="view-wrap" style="display:none;">
+    									<div class="view-box">加载中...</div>
+    								</div>
+															</span>
+                            </div>
+                        </td>
+                        <td class="hall-price" data-partcode="lumiaivista">
+                            <em class="now">94.00</em>
+                            <del class="old">94.00</del>
+                        </td>
+                        <td class="hall-seat">
+                            <a class="seat-btn" href="../account/buy_second.html">选座购票</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div></div>
+</div>
+
+
+<link rel="stylesheet" href="../src/css/footer/index.css">
+<div class="footer" style="margin-top:0px">
+    <div class="footWrap">
+        <div class="footMiddle" style="height: 150px;">
+            <div class="footLogo">
+                <a href="#"><img src="//gw.alicdn.com/tps/i1/TB1JUFIJVXXXXXUXXXXJxQf.VXX-134-40.png" /></a>
+                <span>如果您是消费者，</span>
+                <span>请拨打0571-88157838</span>
+                <span>如果您是影院/合作商家，</span>
+                <span>请拨打400-825-9220</span>
+                <span>(服务时间:9:00-21:00)</span>
+            </div>
+            <dl>
+                <dt>选座购票流程</dt>
+                <dd><a href="//service.taobao.com/support/knowledge-1207263.htm?spm=a2406.1303970.a241y5.1&dkey=catview" target="_blank" title="选择影片和场次">选择影片和场次</a></dd>
+                <dd><a href="//service.taobao.com/support/knowledge-1207263.htm?spm=a2406.1303970.a241y5.2&dkey=catview" target="_blank" title="选择中意的座位">选择中意的座位</a></dd>
+                <dd><a href="//service.taobao.com/support/knowledge-1207263.htm?spm=a2406.1303970.a241y5.3&dkey=catview" target="_blank" title="支付并收到取票短信">支付并收到取票短信</a></dd>
+            </dl>
+            <dl>
+                <dt>取票流程</dt>
+                <dd><a href="//service.taobao.com/support/knowledge-1207263.htm?spm=a2406.1303970.a241y5.4&dkey=catview#1207263+d" target="_blank" title="收到取票短信">收到取票短信</a></dd>
+                <dd><a href="//service.taobao.com/support/knowledge-1207263.htm?spm=a2406.1303970.a241y5.5&dkey=catview#1207263+e" target="_blank" title="影院自助取票">影院自助取票</a></dd>
+                <dd><a href="//service.taobao.com/support/knowledge-1207265.htm?spm=a2406.1303970.a241y5.6" target="_blank" title="短信重发方式">短信重发方式</a></dd>
+            </dl>
+            <dl>
+                <dt>常见问题</dt>
+                <dd><a href="//service.taobao.com/support/knowledge-1207267.htm?spm=a2406.1303970.a241y5.7&dkey=catview" target="_blank" title="是否支持退换票">是否支持退换票</a></dd>
+                <dd><a href="//service.taobao.com/support/knowledge-1207266.htm?spm=a2406.1303970.a241y5.8&dkey=catview" target="_blank" title="填错手机号怎么办">填错手机号怎么办</a></dd>
+                <dd><a href="//service.taobao.com/support/8304287.htm?spm=a2406.1303970.a241y5.9" target="_blank" title="更多问题>>">更多问题>></a></dd>
+            </dl>
+            <dl>
+                <dt>协议规范</dt>
+                <dd><a href="https://h5.m.taopiaopiao.com/app/dianying/pages/alfheim/content.html?id=924&interact=no" target="_blank" title="用户服务协议">用户服务协议</a></dd>
+                <dd><a href="https://h5.m.taopiaopiao.com/app/dianying/pages/alfheim/content.html?id=1598&interact=no" target="_blank" title="食品管理规范">食品管理规范</a></dd>
+                <dd><a href="https://h5.m.taopiaopiao.com/app/dianying/pages/alfheim/content.html?id=30390&displayType=plain&interact=no" target="_blank" title="隐私权政策">隐私权政策</a></dd>
+            </dl>
+            <div class="order-code" style="background-image:url(//img.alicdn.com/tps/TB1OxfBKXXXXXbXXpXXXXXXXXXX-76-240.png);"></div>
+        </div>
+        <div class="footBottom">
+            <img class="img" src="//img.alicdn.com/tps/i2/T1Vt8KFiRhXXXOFx6f-39-60.png">
+            <div class="footer-ali">
+                <a href="//news.alibaba.com/specials/aboutalibaba/aligroup/index.html?spm=1.1000386.245549.1.lsGIAa" data-spm-anchor-id="1.1000386.245549.1">阿里巴巴集团</a>
+                <b>|</b>
+                <a href="//www.alibaba.com?spm=1.1000386.245549.2.lsGIAa" data-spm-anchor-id="1.1000386.245549.2">阿里巴巴国际站</a>
+                <b>|</b>
+                <a href="//www.1688.com?spm=1.1000386.245549.3.lsGIAa" data-spm-anchor-id="1.1000386.245549.3">阿里巴巴中国站</a>
+                <b>|</b>
+                <a href="//www.aliexpress.com?spm=1.1000386.245549.4.lsGIAa" data-spm-anchor-id="1.1000386.245549.4">全球速卖通</a>
+                <b>|</b>
+                <a href="//www.taobao.com/index_global.php?spm=1.1000386.245549.5.lsGIAa" data-spm-anchor-id="1.1000386.245549.5">淘宝网</a>
+                <b>|</b>
+                <a href="//www.tmall.com?spm=1.1000386.245549.6.lsGIAa" data-spm-anchor-id="1.1000386.245549.6">天猫</a>
+                <b>|</b>
+                <a href="//ju.taobao.com?spm=1.1000386.245549.7.lsGIAa" data-spm-anchor-id="1.1000386.245549.7">聚划算</a>
+                <b>|</b>
+                <a href="//www.etao.com/?spm=1.1000386.245549.8.lsGIAa&amp;tbpm=t" data-spm-anchor-id="1.1000386.245549.8">一淘</a>
+                <b>|</b>
+                <a href="//www.alimama.com?spm=1.1000386.245549.9.lsGIAa" data-spm-anchor-id="1.1000386.245549.9">阿里妈妈</a>
+                <b>|</b>
+                <a href="//www.aliyun.com?spm=1.1000386.245549.10.lsGIAa" data-spm-anchor-id="1.1000386.245549.10">阿里云计算</a>
+                <b>|</b>
+                <a href="//www.yunos.com?spm=1.1000386.245549.11.lsGIAa" data-spm-anchor-id="1.1000386.245549.11">云OS</a>
+                <b>|</b>
+                <a href="//www.net.cn?spm=1.1000386.245549.12.lsGIAa" data-spm-anchor-id="1.1000386.245549.12">万网</a>
+                <b>|</b>
+                <a href="//cn.yahoo.com?spm=1.1000386.245549.13.lsGIAa" data-spm-anchor-id="1.1000386.245549.13">中国雅虎</a>
+                <b>|</b>
+                <a href="//www.alipay.com" data-spm-anchor-id="1.1000386.245549.14">支付宝</a>
+            </div>
+            <div class="foot-nav">
+                <a href="//www.taobao.com/about/?spm=1.1000386.245549.15.lsGIAa" data-spm-anchor-id="1.1000386.245549.15">关于淘宝</a>
+                <a href="//www.taobao.com/about/partners.php?spm=1.1000386.245549.16.lsGIAa" data-spm-anchor-id="1.1000386.245549.16">合作伙伴</a>
+                <a href="//pro.taobao.com/?spm=1.1000386.245549.17.lsGIAa" data-spm-anchor-id="1.1000386.245549.17">营销中心</a>
+                <a href="//service.taobao.com/support/main/service_route.htm?spm=1.1000386.245549.18.lsGIAa" data-spm-anchor-id="1.1000386.245549.18">联系客服</a>
+                <a href="//open.taobao.com/?spm=1.1000386.245549.19.lsGIAa" data-spm-anchor-id="1.1000386.245549.19">开放平台</a>
+                <a href="//www.taobao.com/about/join.php?spm=1.1000386.245549.20.lsGIAa" data-spm-anchor-id="1.1000386.245549.20">诚征英才</a>
+                <a href="//www.taobao.com/about/contact.php?spm=1.1000386.245549.21.lsGIAa" data-spm-anchor-id="1.1000386.245549.21">联系我们</a>
+                <a href="//www.taobao.com/sitemap.php?spm=1.1000386.245549.22.lsGIAa" data-spm-anchor-id="1.1000386.245549.22">网站地图</a>
+                <a href="//www.taobao.com/about/copyright.php?spm=1.1000386.245549.23.lsGIAa" data-spm-anchor-id="1.1000386.245549.23">法律声明</a>
+                <span>&copy; 2017 Taopiaopiao.com 版权所有</span><br>增值电信业务经营许可证：沪B2-20170117 沪ICP备16050036号-1 <a href="//files.alicdn.com/tpsservice/77ec1f5f3fad05922448509b048e47b4.pdf" target="_blank" title="营业执照"> 营业执照</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

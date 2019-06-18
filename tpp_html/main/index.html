@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>淘票票</title>
+    <meta charset="utf-8"/>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <link href="../src/css/common.less.css" rel="stylesheet">
+    <!--<link href="../src/css/index-min.css" rel="stylesheet">-->
+    <link href="../src/css/index.less.css" rel="stylesheet">
+    <link href="../src/css/home/index.less.css" rel="stylesheet">
+    <link href="../src/css/footer/index.css" rel="stylesheet">
+    <link href="../src/css/index.css" rel="stylesheet">
+    <script src="../base/js/base.js"></script>
+    <script src="../src/js/index.js"></script>
+
+    <!--<script src="../base/js/header.js"></script>-->
+
+    <script type="text/javascript">
+        $(function () {
+            $('.tab-movie-list:first').css('display', 'block')
+        })
+    </script>
+
+</head>
+<body>
+
+<div class="head-wrap" data-spm="header">
+    <div class="head-content center-wrap">
+        <h1 class="logo">
+            <a target="_top" href="https://dianying.taobao.com/?n_s=new"></a>
+        </h1>
+        <!--cityWrap_hover-->
+        <div class="cityWrap  M-cityWrap">
+            <a id="cityName" class="cityName" href="javascript:"><span class="name" id="city_name"></span><s
+                    class="tri"></s></a>
+            <input type="hidden" id="H_CityId" value="310100">
+            <input type="hidden" id="H_CityName" value="上海">
+            <div class="cityList ">
+                <div class="cityBox" data-spm="city">
+                    <div class="cityTitle">
+                        热门:
+                        <a href="?city=100000" data-id="110100" class="ignore-city">北京</a>
+                        <a href="?city=200000" data-id="200000" class="ignore-city">上海</a>
+                        <a href="?city=310026" data-id="310026" class="ignore-city">杭州</a>
+                        <a href="?city=510032" data-id="510032" class="ignore-city">广州</a>
+                        <a href="?city=518035" data-id="518035" class="ignore-city">深圳</a>
+                        <a href="?city=400000" data-id="400000" class="ignore-city">重庆</a>
+                        <a href="?city=610015" data-id="610015" class="ignore-city">成都</a>
+                        <a href="?city=210008" data-id="210008" class="ignore-city">南京</a>
+                        <a href="?city=215002" data-id="215002" class="ignore-city">苏州</a>
+                        <a href="?city=430014" data-id="430014" class="ignore-city">武汉</a>
+                        <a href="?city=710003" data-id="710003" class="ignore-city">西安</a>
+                    </div>
+                    <div class="M-cityList scrollStyle">
+                        <!--<div class="loading"><i></i></div>-->
+                    </div>
+                    <div class="citySearch">
+                        <label>搜索城市:</label><input type="text"><a href="javascript:" class="J_citySearch_btn">&nbsp;确定&nbsp;</a>
+                    </div>
+                </div>
+                <div class="cityShade"></div>
+            </div>
+        </div>
+
+        <div class="nav-wrap">
+            <ul class="nav">
+                <li class="J_NavItem  current ">
+                    <a href="" target="_top">首页</a>
+                </li>
+                <li class="J_NavItem ">
+                    <a href="movies.html" target="_top">影片</a>
+                </li>
+                <li class="J_NavItem ">
+                    <a href="cinema_list.html" target="_top">影院</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div id="M-banner" class="banner-wrap">
+    <ul class="banner-content" style="width: 1349px; overflow: hidden; height: 360px;">
+        <div style="position: absolute; overflow: hidden; width: 4047px; transition-duration: 0s; transform: translate3d(-1349px, 0px, 0px); backface-visibility: hidden; left: 0px;">
+            <li class="banner-item" style="float: left; overflow: hidden; width: 1349px; display: block;">
+                <a target="_top" href="#" style="background-image: url('https://img.alicdn.com/bao/uploaded/gw.alicdn.com/tfs/TB1GRxRfZLJ8KJjy0FnXXcFDpXa-1920-360.jpg');"></a>
+            </li>
+            <li class="banner-item" style="float: left; overflow: hidden; width: 1349px; display: block;">
+                <a target="_top" href="#" style="background-image: url('https://img.alicdn.com/bao/uploaded/gw.alicdn.com/tfs/TB1GRxRfZLJ8KJjy0FnXXcFDpXa-1920-360.jpg');"></a>
+            </li>
+            <li class="banner-item" style="float: left; overflow: hidden; width: 1349px; display: block;">
+                <a target="_top" href="#" style="background-image: url('https://img.alicdn.com/bao/uploaded/gw.alicdn.com/tfs/TB1GRxRfZLJ8KJjy0FnXXcFDpXa-1920-360.jpg');"></a>
+            </li>
+        </div>
+    </ul>
+    <div class="banner-scrollable"></div>
+    <a class="M-BannerLeft bannerControl" href="javascript:;"></a>
+    <a class="M-BannerRight bannerControl" href="javascript:;"></a>
+</div>
+
+<div class="center-wrap">
+
+    <div class="tab-control tab-movie-tit" id="main_movies">
+    </div>
+
+    <!--movie-card-soon-->
+    <div class="tab-content">
+        <div class="tab-movie-list" id="hot"></div>
+        <div class="tab-movie-list" id="ready"></div>
+    </div>
+</div>
+<div class="center-wrap">
+    <div class="home-toplist">
+        <!-- 上周票房排行 -->
+        <div class="home-toplist-item">
+            <div class="movie-weeklist" data-spm="t1">
+                <h5><span>上周票房排行</span><a href="https://dianying.taobao.com/showList.htm?n_s=new" class="more">全部影片&nbsp;&gt;</a>
+                </h5>
+                <ul class="weeklist M-weeklist">
+                    <li>
+                        <i class="i-1"></i>
+                        <span class="poster"><a
+                                href="https://dianying.taobao.com/showDetail.htm?showId=136466&amp;n_s=new"><img
+                                width="120" height="90"
+                                src="https://img.alicdn.com/bao/uploaded/i1/TB1Fsc.c0zJ8KJjSspkXXbF7VXa_.jpg_120x90.jpg"></a></span>
+                        <a href="https://dianying.taobao.com/showDetail.htm?showId=136466&amp;n_s=new"
+                           class="name">海王</a>
+                        <span class="rating">9.2</span>
+                        <span class="buynow"><a
+                                href="https://dianying.taobao.com/showDetail.htm?showId=136466&amp;n_s=new" class="buy">选座购票</a></span>
+                    </li>
+                    <li>
+                        <i class="i-2"></i>
+                        <span class="poster"><a
+                                href="https://dianying.taobao.com/showDetail.htm?showId=226415&amp;n_s=new"><img
+                                width="120" height="90"
+                                src="https://img.alicdn.com/bao/uploaded/i1/TB1G3BWXxjaK1RjSZFAXXbdLFXa_.jpg_120x90.jpg"></a></span>
+                        <a href="https://dianying.taobao.com/showDetail.htm?showId=226415&amp;n_s=new"
+                           class="name">无名之辈</a>
+                        <span class="rating">8.9</span>
+                        <span class="buynow"><a
+                                href="https://dianying.taobao.com/showDetail.htm?showId=226415&amp;n_s=new" class="buy">选座购票</a></span>
+                    </li>
+                    <li>
+                        <i class="i-3"></i>
+                        <span class="poster"><a
+                                href="https://dianying.taobao.com/showDetail.htm?showId=39883&amp;n_s=new"><img
+                                width="120" height="90"
+                                src="https://img.alicdn.com/bao/uploaded/i4/TB1M0R8JpXXXXc_XXXXXXXXXXXX_.jpg_120x90.jpg"></a></span>
+                        <a href="https://dianying.taobao.com/showDetail.htm?showId=39883&amp;n_s=new"
+                           class="name">龙猫</a>
+                        <span class="rating"></span>
+                        <span class="buynow"><a
+                                href="https://dianying.taobao.com/showDetail.htm?showId=39883&amp;n_s=new" class="buy">选座购票</a></span>
+                    </li>
+                    <li>
+                        <i class="i-4"></i>
+                        <span class="poster"><a
+                                href="https://dianying.taobao.com/showDetail.htm?showId=87754&amp;n_s=new"><img
+                                width="120" height="90"
+                                src="https://img.alicdn.com/bao/uploaded/i1/TB1VL1eJpXXXXXSXXXXXXXXXXXX_.jpg_120x90.jpg"></a></span>
+                        <a href="https://dianying.taobao.com/showDetail.htm?showId=87754&amp;n_s=new"
+                           class="name">狗十三</a>
+                        <span class="rating">8.5</span>
+                        <span class="buynow"><a
+                                href="https://dianying.taobao.com/showDetail.htm?showId=87754&amp;n_s=new" class="buy">选座购票</a></span>
+                    </li>
+                    <li>
+                        <i class="i-5"></i>
+                        <span class="poster"><a
+                                href="https://dianying.taobao.com/showDetail.htm?showId=1279135&amp;n_s=new"><img
+                                width="120" height="90"
+                                src="https://img.alicdn.com/bao/uploaded/i1/TB1knj.tIyYBuNkSnfoXXcWgVXa_.jpg_120x90.jpg"></a></span>
+                        <a href="https://dianying.taobao.com/showDetail.htm?showId=1279135&amp;n_s=new" class="name">惊涛飓浪</a>
+                        <span class="rating">7.7</span>
+                        <span class="buynow"><a
+                                href="https://dianying.taobao.com/showDetail.htm?showId=1279135&amp;n_s=new"
+                                class="buy">选座购票</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 热门影院 -->
+        <div class="home-toplist-item">
+            <div class="movie-cinemalist title-wrap" data-spm="t2">
+                <h5><span>热门影院排行</span><a href="https://dianying.taobao.com/cinemaList.htm?&n_s=new" class="more">全部影院&nbsp;&gt;</a>
+                </h5>
+                <ul class="cinemalist M-cinemalist">
+
+                    <li class="current">
+                        <i class="i-1"></i>
+                        <a href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=28672&amp;n_s=new" class="name">武汉耀莱成龙国际影城（光谷店）</a>
+                        <span class="address">洪山区珞瑜路889号融众国际大厦6-7层</span>
+                        <span class="buynow">
+											<a class="seat"
+                                               href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=28672&amp;n_s=new">选座</a>
+					                </span>
+                    </li>
+                    <li>
+                        <i class="i-2"></i>
+                        <a href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=55296&amp;n_s=new" class="name">武汉大汉口电影院（水塔店）</a>
+                        <span class="address">江汉区中山大道539号（水塔）大汉口城四楼地铁2／6号线F出口</span>
+                        <span class="buynow">
+											<a class="seat"
+                                               href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=55296&amp;n_s=new">选座</a>
+					                </span>
+                    </li>
+                    <li>
+                        <i class="i-3"></i>
+                        <a href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=29697&amp;n_s=new" class="name">阳逻天河国际影城</a>
+                        <span class="address">新洲区阳逻街阳光大道49号3楼（肯德基楼上）</span>
+                        <span class="buynow">
+											<a class="seat"
+                                               href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=29697&amp;n_s=new">选座</a>
+					                </span>
+                    </li>
+                    <li>
+                        <i class="i-4"></i>
+                        <a href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=45828&amp;n_s=new" class="name">天纵城环球影城</a>
+                        <span class="address">黄陂区盘龙城经济开发区巨龙大道天纵城广场4楼</span>
+                        <span class="buynow">
+											<a class="seat"
+                                               href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=45828&amp;n_s=new">选座</a>
+					                </span>
+                    </li>
+                    <li>
+                        <i class="i-5"></i>
+                        <a href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=34821&amp;n_s=new" class="name">洪山礼堂银兴电影城</a>
+                        <span class="address">武昌区洪山路81号</span>
+                        <span class="buynow">
+											<a class="seat"
+                                               href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=34821&amp;n_s=new">选座</a>
+					                </span>
+                    </li>
+                    <li>
+                        <i class="i-6"></i>
+                        <a href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=5382&amp;n_s=new" class="name">万达影城（春树里广场店）</a>
+                        <span class="address">武昌区中北路166号岳家嘴东湖春树里购物中心四层</span>
+                        <span class="buynow">
+											<a class="seat"
+                                               href="https://dianying.taobao.com/cinemaDetail.htm?cinemaId=5382&amp;n_s=new">选座</a>
+					                </span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="foot"></div>
+</body>
+</html>

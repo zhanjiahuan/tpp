@@ -1,0 +1,77 @@
+/*.banner-wrap {*/
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*height: 360px;*/
+    /*width: 100%;*/
+    /*background: #333;*/
+    /*overflow: hidden;*/
+/*}*/
+
+/*.banner-scrollable {*/
+    /*position: absolute;*/
+    /*bottom: 10px;*/
+    /*left: 50%;*/
+    /*display: none;*/
+/*}*/
+
+/*.banner-scrollable li {*/
+    /*float: left;*/
+    /*list-style-type: none;*/
+/*}*/
+
+/*.banner-scrollable li a {*/
+    /*display: inline-block;*/
+    /*width: 10px;*/
+    /*height: 10px;*/
+    /*background: #FFF;*/
+    /*color: #FFF;*/
+    /*margin-left: 8px;*/
+    /*overflow: hidden;*/
+/*}*/
+
+/*.banner-scrollable li.current a {*/
+    /*display: inline-block;*/
+    /*width: 10px;*/
+    /*height: 10px;*/
+    /*background: #fff;*/
+    /*color: #fff;*/
+    /*margin-left: 8px;*/
+    /*overflow: hidden;*/
+/*}*/
+
+/*.banner-item {*/
+    /*height: 360px;*/
+    /*width: 100%;*/
+/*}*/
+
+/*.banner-item a {*/
+    /*display: block;*/
+    /*height: 360px;*/
+    /*width: 100%;*/
+    /*background-position: center center;*/
+    /*background-repeat: no-repeat;*/
+    /*text-align: center;*/
+/*}*/
+
+/*.bannerControl {*/
+    /*position: absolute;*/
+    /*top: 120px;*/
+    /*width: 48px;*/
+    /*height: 68px;*/
+    /*background: url(https://img.alicdn.com/bao/uploaded/img.alicdn.com/tps/i2/TB1CjQ_FVXXXXbgXXXXc98EUXXX-48-200.png) no-repeat;*/
+    /*display: none;*/
+/*}*/
+
+/*.M-BannerLeft {*/
+    /*left: 15%;*/
+/*}*/
+
+/*.M-BannerRight {*/
+    /*right: 15%;*/
+    /*background-position: 0px -132px;*/
+/*}*/
+
+.tab-control-item,.more{
+    cursor: pointer;
+}
+

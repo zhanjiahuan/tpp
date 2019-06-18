@@ -1,0 +1,991 @@
+.detail-wrap {
+    width: 100%;
+    height: auto;
+    position: relative;
+    background: #42383d;
+    z-index: 1;
+    overflow: hidden;
+    padding-bottom: 20px
+}
+
+.detail-wrap .detail-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 2s ease;
+    z-index: -1
+}
+
+.detail-wrap .detail-bg img {
+    display: block;
+    float: left;
+    position: relative;
+    left: -10%;
+    top: 0;
+    height: auto;
+    width: 120%
+}
+
+.detail-wrap .detail-movies {
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, .3);
+    transform: translateY(-100%);
+    z-index: 10;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    transition: all .2s ease
+}
+
+.detail-wrap .movies-open {
+    display: block;
+    width: 56px;
+    height: 185px;
+    position: absolute;
+    left: 50%;
+    margin-left: 520px;
+    top: -5px;
+    z-index: 12;
+    transition: top .9s ease;
+    text-indent: -999em;
+    overflow: hidden;
+    background: url(https://img.alicdn.com/bao/uploaded/img.alicdn.com/tps/i2/TB1NF4tGXXXXXazXFXXqP8OYXXX-56-185.png) no-repeat
+}
+
+.detail-wrap .movies-open:hover {
+    top: 0
+}
+
+.detail-wrap .detail-cont {
+    width: 100%;
+    padding-top: 10px;
+    color: #FFF;
+    transition: all .3s ease
+}
+
+.detail-wrap .detail-cont .center-wrap {
+    position: relative
+}
+
+.detail-wrap .detail-cont .cont-title {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    border-bottom: 1px solid #7a7a7a;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    margin-bottom: 16px
+}
+
+.detail-wrap .detail-cont .cont-title i {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400
+}
+
+.detail-wrap .detail-cont .cont-title .score {
+    color: #be1932
+}
+
+.detail-wrap .detail-cont .cont-pic {
+    float: left;
+    width: 225px
+}
+
+.detail-wrap .detail-cont .cont-pic img {
+    display: inline-block;
+    width: 210px;
+    height: 280px;
+    overflow: hidden
+}
+
+.detail-wrap .detail-cont .cont-info {
+    float: left;
+    width: 590px
+}
+
+.detail-wrap .detail-cont .cont-info .comment {
+    font-size: 18px;
+    line-height: 22px;
+    height: 38px
+}
+
+.detail-wrap .detail-cont .cont-info .comment .quot, .detail-wrap .detail-cont .cont-info .comment .quotend {
+    display: inline-block;
+    overflow: hidden;
+    height: 24px;
+    width: 30px;
+    font-size: 300%;
+    font-family: arial;
+    line-height: 60px
+}
+
+.detail-wrap .detail-cont .cont-info .comment .quotend {
+    text-align: right
+}
+
+.detail-wrap .detail-cont .cont-info li {
+    width: 100%;
+    padding-bottom: 12px;
+    display: inline-block
+}
+
+.detail-wrap .detail-cont .cont-info .shrink {
+    height: 40px;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0;
+    transition: height .2s ease
+}
+
+.detail-wrap .detail-cont .cont-info .shrink .shrink-btn {
+    word-wrap: normal;
+    white-space: nowrap;
+    float: right
+}
+
+.detail-wrap .detail-cont .cont-info .showit:after {
+    display: inline-block;
+    width: 120%;
+    height: 0;
+    content: ' ';
+    word-break: break-all;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.detail-wrap .detail-cont .cont-view {
+    float: right;
+    width: 156px;
+    padding-top: 40px
+}
+
+.detail-wrap .detail-cont .cont-view .float-layer-hook {
+    display: inline-block;
+    float: left;
+    margin-bottom: 20px
+}
+
+.detail-wrap .detail-cont .cont-view a {
+    display: inline-block;
+    width: 156px;
+    height: 104px;
+    overflow: hidden;
+    position: relative
+}
+
+.detail-wrap .detail-cont .cont-view a span {
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, .5);
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    bottom: 0;
+    right: 0
+}
+
+.detail-wrap .detail-cont .cont-view a s {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    top: 30px;
+    left: 55px;
+    background: url(https://img.alicdn.com/bao/uploaded/img.alicdn.com/tps/i4/TB1GR_FGXXXXXbZXFXXiC47GVXX-44-44.png) no-repeat
+}
+
+.detail-wrap .detail-cont .cont-time {
+    float: right;
+    width: 156px;
+    height: 22px;
+    text-align: right;
+    line-height: 22px;
+    font-size: 14px
+}
+
+.detail-movies .movies-scroll {
+    height: 225px;
+    width: 100%;
+    overflow: hidden;
+    font-size: 0
+}
+
+.detail-movies .center-wrap {
+    position: relative;
+    top: 100px
+}
+
+.detail-movies .scroll-btn {
+    display: block;
+    position: absolute;
+    width: 48px;
+    height: 68px;
+    top: 70px;
+    left: -70px;
+    background: url(https://img.alicdn.com/bao/uploaded/img.alicdn.com/tps/i1/TB1XmOdGXXXXXa8XVXXdGx19VXX-100-68.png) no-repeat;
+    color: #333
+}
+
+.detail-movies .scroll-btn-right {
+    left: auto;
+    right: -70px;
+    background-position: right top
+}
+
+.detail-movies ul {
+    display: block;
+    width: auto;
+    height: 300px;
+    overflow: hidden;
+    overflow-x: scroll;
+    *overflow: scroll;
+    white-space: nowrap;
+    margin-right: -48px
+}
+
+.detail-movies ul li {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    margin-right: 48px;
+    width: 160px;
+    height: 225px;
+    overflow: hidden;
+    position: relative
+}
+
+.detail-movies ul li a, .detail-movies ul li img {
+    height: 100%;
+    width: 100%
+}
+
+.detail-movies ul li a {
+    display: block
+}
+
+.detail-movies ul a span {
+    width: 100%;
+    height: 30px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    position: absolute;
+    z-index: 1;
+    background: rgba(0, 0, 0, .5);
+    left: 0;
+    bottom: 0;
+    line-height: 30px
+}
+
+.detail-movies ul a span em {
+    display: inline-block;
+    float: left;
+    height: 100%;
+    color: #fff;
+    font-size: 12px
+}
+
+.detail-movies ul a span .name {
+    width: 80%;
+    text-indent: 6px
+}
+
+.detail-movies ul a span .score {
+    width: 20%;
+    text-align: center
+}
+
+.detail-hauled .detail-movies {
+    display: block;
+    opacity: 1;
+    height: 100%;
+    *height: 400px;
+    transform: translateY(0)
+}
+
+.detail-hauled .detail-cont {
+    visibility: hidden;
+    opacity: .04;
+    transform: translateY(10%)
+}
+
+.detail-hauled .movies-open {
+    width: 32px;
+    height: 32px;
+    background: url(https://img.alicdn.com/bao/uploaded/img.alicdn.com/tps/i2/TB1l7CsGXXXXXb8XpXXEDhGGXXX-32-32.png) no-repeat;
+    position: absolute;
+    left: auto;
+    right: 20px;
+    top: auto;
+    bottom: 10px;
+    margin-left: 0;
+    opacity: .5
+}
+
+.detail-hauled .movies-open:hover {
+    top: auto
+}
+
+.cinemabar-wrap {
+    height: 42px;
+    color: #AAA;
+    line-height: 42px;
+    margin-top: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative
+}
+
+.cinemabar-wrap h4 {
+    display: inline-block;
+    color: #f42429;
+    font-size: 16px;
+    padding-right: 30px;
+    float: left
+}
+
+.cinemabar-wrap .more {
+    display: inline-block;
+    float: right;
+    *position: absolute;
+    *right: 0;
+    *top: 0
+}
+
+.groupon-wrap {
+    width: 300px;
+    float: right
+}
+
+.title-wrap {
+    width: 100%;
+    margin-top: 20px
+}
+
+.title-wrap h3, .title-wrap h4, .title-wrap h5 {
+    display: inline-block;
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    font-size: 20px;
+    border-bottom: 1px solid #e5e5e5
+}
+
+.filter-wrap {
+    widht: 100%;
+    margin-top: 20px
+}
+
+.filter-wrap .filter-select {
+    padding-left: 90px;
+    background: #FFDDDC;
+    overflow: hidden
+}
+
+.filter-wrap .filter-select li {
+    position: relative;
+    line-height: 25px;
+    padding: 12px 60px 12px 0;
+    clear: both;
+    background: #FFF6F5;
+    height: auto;
+    *zoom: 1
+}
+
+.filter-wrap .filter-select li .select-tags {
+    width: 100%;
+    max-height: 50px;
+    _height: 50px;
+    overflow: hidden
+}
+
+.filter-wrap .filter-select li .select-show {
+    position: absolute;
+    bottom: 12px;
+    right: 18px;
+    color: #ef2e50
+}
+
+.filter-wrap .filter-select li .select-show:hover {
+    color: #ef2e50;
+    background: 0 0
+}
+
+.filter-wrap .filter-select li:after {
+    content: '\0020';
+    display: block;
+    height: 0;
+    clear: both
+}
+
+.filter-wrap .filter-select a, .filter-wrap .filter-select label {
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    float: left;
+    white-space: nowrap
+}
+
+.filter-wrap .filter-select label {
+    position: absolute;
+    width: 90px;
+    left: -90px;
+    *top: 10px;
+    text-align: center;
+    color: #797979
+}
+
+.filter-wrap .filter-select a {
+    width: auto;
+    *widht: 100px;
+    padding: 0 8px;
+    margin-left: 22px;
+    margin-top: 2px;
+    *margin-left: 0;
+    *padding-left: 22px;
+    color: #4f4f4f
+}
+
+.filter-wrap .filter-select a.current, .filter-wrap .filter-select a:hover {
+    text-decoration: none;
+    color: #FFF;
+    background: #f42429
+}
+
+.filter-wrap .search-wrap {
+    padding-left: 22px
+}
+
+.filter-wrap .search-wrap .search-input {
+    width: 219px;
+    height: 28px;
+    background: #fff;
+    color: #626060;
+    outline: 0;
+    border: 1px solid #e5e5e5;
+    border-right: none;
+    float: left;
+    text-indent: 4px
+}
+
+.filter-wrap .search-wrap .search-btn {
+    display: inline-block;
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    padding: 0;
+    margin: 0;
+    background: #eb002a;
+    color: #FFF
+}
+
+.filter-wrap .search-wrap .icon-search {
+    display: inline-block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin: 6px 0 0 13px;
+    text-indent: -999em;
+    overflow: hidden;
+    background: url(https://img.alicdn.com/bao/uploaded/img.alicdn.com/tps/i2/TB1njJOGXXXXXbeXpXXAz6UFXXX-16-16.png) no-repeat
+}
+
+.hall-table {
+    width: 100%;
+    color: #797979
+}
+
+.hall-table thead {
+    font-size: 14px;
+    background: #EAEAEA
+}
+
+.hall-table thead th {
+    height: 40px;
+    line-height: 40px;
+    font-weight: 400;
+    font-size: 14px
+}
+
+.hall-table thead .hall-time, .hall-table thead .hall-type {
+    width: 14%
+}
+
+.hall-table thead .hall-name {
+    width: 10%
+}
+
+.hall-table thead .hall-flow {
+    width: 18%
+}
+
+.hall-table thead .hall-price {
+    width: auto
+}
+
+.hall-table thead .hall-buy {
+    width: 16%
+}
+
+.hall-table tbody {
+    font-size: 13px
+}
+
+.hall-table tbody td {
+    height: 60px;
+    text-align: center;
+    line-height: 23px
+}
+
+.hall-table tbody .even {
+    background: #F6F6F6
+}
+
+.hall-table tbody .hall-time {
+    font-size: 12px
+}
+
+.hall-table tbody .hall-time .bold {
+    display: inline-block;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    clear: both
+}
+
+.hall-table tbody .hall-flow .icon-zoom {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(https://img.alicdn.com/bao/uploaded/img.alicdn.com/tps/i1/TB1x8xyGXXXXXcLXpXXsmimVFXX-100-390.png) 0 -20px no-repeat;
+    cursor: pointer;
+    position: relative;
+    top: 3px
+}
+
+.hall-table tbody .hall-price {
+    line-height: 20px;
+    font-size: 12px
+}
+
+.hall-table tbody .hall-price .now {
+    font-size: 18px;
+    color: #eb002a;
+    font-weight: 700
+}
+
+.hall-table tbody .hall-price .old {
+    font-size: 12px
+}
+
+.hall-table tbody .hall-seat .seat-btn {
+    display: inline-block;
+    width: 128px;
+    height: 33px;
+    line-height: 33px;
+    color: #fff;
+    background: #F42429;
+    overflow: hidden;
+    margin-top: 8px
+}
+
+.hall-table tbody .hall-seat .icon-seat {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 3px;
+    background: url(https://img.alicdn.com/bao/uploaded/img.alicdn.com/tps/i1/TB1x8xyGXXXXXcLXpXXsmimVFXX-100-390.png) no-repeat
+}
+
+.hall-table .flowing-wrap label {
+    height: 18px;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 22px
+}
+
+.hall-table .flowing-wrap .flowing-vol {
+    display: inline-block;
+    width: 54px;
+    height: 14px;
+    background: #EAEAEA
+}
+
+.hall-table .flowing-wrap .flowing-vol i {
+    display: block;
+    float: left;
+    height: 100%
+}
+
+.hall-table .flowing-wrap .flowing-view {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: relative
+}
+
+.hall-table .flowing-wrap .flowing-view .view-wrap {
+    width: 128px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    display: block;
+    background: #fff3f3;
+    border: 1px solid #ffd5d5;
+    z-index: 10;
+    overflow: hidden
+}
+
+.hall-table .flowing-wrap .flowing-view .view-box {
+    backgroun: url(//g.alicdn.com/ju/utility/indicator/loading-movie.svg?t=20140709) no-repeat center center
+}
+
+.hall-table .flowing-wrap .flowing-invalid {
+    visibility: hidden
+}
+
+.hall-table .flowing-loose label {
+    color: #26bb7e
+}
+
+.hall-table .flowing-loose i {
+    background: #26bb7e
+}
+
+.hall-table .flowing-mass label {
+    color: #eb002a
+}
+
+.hall-table .flowing-mass i {
+    background: #eb002a
+}
+
+.hall-table .seat-cell {
+    background: #ccc;
+    border: 1px solid #fff
+}
+
+.hall-table .seat-sold {
+    background: red;
+    border: 1px solid #fff
+}
+
+.hall-table .seat-love {
+    background: #ccc;
+    border: 1px solid #fff
+}
+
+.hall-table .seat-love-sold {
+    background: red;
+    border: 1px solid #fff
+}
+
+.hall-table .unregular-seat {
+    position: absolute
+}
+
+.movie-custlist .custlist li .buynow a:hover, .movie-custlist .custlist li .name:hover {
+    text-decoration: none
+}
+
+.movie-custlist {
+    width: 100%;
+    margin-top: 20px
+}
+
+.movie-custlist .error-wrap {
+    height: 185px
+}
+
+.movie-custlist h5 {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    border-bottom: 1px #dcdcdc solid
+}
+
+.movie-custlist h5 span {
+    float: left
+}
+
+.movie-custlist .more {
+    float: right;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 400
+}
+
+.movie-custlist .custlist li {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    line-height: 22px;
+    border-bottom: 1px #e5e5e5 dotted;
+    height: 44px;
+    overflow: hidden
+}
+
+.movie-custlist .custlist li i {
+    display: block;
+    float: left;
+    width: 9px;
+    height: 9px;
+    margin-top: 7px;
+    background-image: url(https://img.alicdn.com/bao/uploaded/img.alicdn.com/tps/i1/TB1RUdfGXXXXXXBXpXXTFRtJpXX-9-213.png);
+    background-repeat: no-repeat
+}
+
+.movie-custlist .custlist li i.i-1 {
+    background-position: 0 0
+}
+
+.movie-custlist .custlist li i.i-2 {
+    background-position: 0 -42px
+}
+
+.movie-custlist .custlist li i.i-3 {
+    background-position: 0 -81px
+}
+
+.movie-custlist .custlist li i.i-4 {
+    background-position: 0 -125px
+}
+
+.movie-custlist .custlist li i.i-5 {
+    background-position: 0 -168px
+}
+
+.movie-custlist .custlist li i.i-6 {
+    background-position: 0 -204px
+}
+
+.movie-custlist .custlist li .name {
+    margin-left: 15px;
+    color: #3e3e3e;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left;
+    cursor: pointer
+}
+
+.movie-custlist .custlist li .address {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 90%
+}
+
+.movie-custlist .custlist li .price {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 10px;
+    color: #eb002a;
+    font-size: 14px
+}
+
+.movie-custlist .custlist li .buynow {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 11px
+}
+
+.movie-custlist .custlist li .buynow a {
+    display: block;
+    float: left;
+    padding: 0 5px;
+    margin-left: 5px;
+    line-height: 30px;
+    background-color: #eb002a;
+    color: #fff
+}
+
+.movie-custlist .custlist li.current .buynow {
+    display: block
+}
+
+.movie-custlist .custlist li.current .price {
+    display: none
+}
+
+.comment-wrap {
+    width: 645px;
+    float: left;
+    position: relative
+}
+
+.comment-wrap .detail a {
+    color: #8b3f49
+}
+
+.comment-wrap .comment-cont {
+    padding-top: 15px
+}
+
+.comment-wrap .comment-avatar {
+    width: 64px;
+    height: 64px;
+    float: left;
+    padding-top: 11px
+}
+
+.comment-wrap .comment-edit {
+    width: 555px;
+    float: right
+}
+
+.comment-wrap .comment-edit .act {
+    line-height: 32px
+}
+
+.comment-wrap .comment-edit .act .face {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    padding-left: 20px;
+    position: relative;
+    top: 7px;
+    line-height: 16px;
+    color: #666;
+    height: 16px;
+    background: url(https://img.alicdn.com/bao/uploaded/img.alicdn.com/tps/i2/TB1SWRgGXXXXXaeaXXXAz6UFXXX-16-16.png) no-repeat;
+    overflow: hidden
+}
+
+.comment-wrap .comment-edit .act .skin-blue {
+    float: right
+}
+
+.comment-wrap .comment-edit .act .skin-blue em {
+    padding: 0 10px
+}
+
+.comment-wrap .comment-edit .act .skin-blue .btn {
+    width: 128px;
+    float: right;
+    background: #eb002a !important
+}
+
+.comment-wrap .comment-edit .act .skin-blue .btn a {
+    display: block;
+    filter: none;
+    float: left;
+    width: 128px;
+    height: 32px;
+    background: #eb002a !important;
+    color: #FFF;
+    line-height: 32px;
+    text-align: center;
+    border: none
+}
+
+.comment-wrap .comment-list {
+    padding: 30px 0;
+    width: 100%;
+    clear: both
+}
+
+.comment-wrap .comment-list li {
+    width: 100%;
+    padding: 10px 0;
+    clear: both;
+    border-top: 1px dashed #e5e5e5;
+    overflow: hidden;
+    position: relative
+}
+
+.comment-wrap .comment-list li .clogo {
+    float: left;
+    width: 64px;
+    height: 64px;
+    padding-right: 10px
+}
+
+.comment-wrap .comment-list li .name {
+    padding-right: 4px
+}
+
+.comment-wrap .comment-list li .name:after {
+    content: ' : '
+}
+
+.comment-wrap .comment-list li .opt {
+    float: right;
+    padding-left: 5px
+}
+
+.comment-wrap .comment-list li .other {
+    width: 550px;
+    float: right
+}
+
+.comment-wrap .comment-list li .other .time {
+    float: left
+}
+
+.comment-wrap .comment-list .sns-pagination a, .comment-wrap .comment-list .sns-pagination strong {
+    display: inline-block;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    width: auto;
+    background: #efefef;
+    padding: 0 6px
+}
+
+.comment-wrap .comment-list .sns-pagination .page-cur {
+    background: #eb002a;
+    color: #fff
+}
+
+.comment-wrap .comment-add .textarea-b {
+    margin-bottom: 0;
+    padding: 0;
+    border: 0;
+    background: 0 0
+}
+
+.comment-wrap .textarea-b .f-txt {
+    width: 100%;
+    height: 62px;
+    border: 1px solid #e5e5e5
+}
+
+.comment-wrap .textarea-b .f-txt:focus {
+    outline: 0
+}
+
+.comment-wrap .sns-pagination {
+    padding-top: 20px;
+    text-align: right
+}
+
+.comment-wrap .sns-pagination a {
+    display: inline-block;
+    line-height: 24px;
+    padding: 0 8px
+}
+
+.comment-wrap .comment-edit .btn a {
+    display: block;
+    float: right;
+    background: #eb002a
+}
